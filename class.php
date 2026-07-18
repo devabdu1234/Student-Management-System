@@ -25,7 +25,7 @@ $rows=db_fetch_all("SELECT * FROM classroom ORDER BY hno");
 ?>
 <!DOCTYPE html><html lang="en" data-theme="light"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Classrooms - ICST Academic Management</title><link rel="icon" href="images/user.png">
+<title>Classrooms - Student Management System</title><link rel="icon" href="images/user.png">
 <?php include_once 'includes/header.php';?></head><body>
 <div class="app-layout"><?php include_once 'includes/sidebar.php';?>
 <div class="main-content"><?php include_once 'includes/nav-menu.php';?>
@@ -53,7 +53,7 @@ $rows=db_fetch_all("SELECT * FROM classroom ORDER BY hno");
 <div class="mci-row"><span class="mci-label">Location</span><span class="mci-value"><?=htmlspecialchars($r['location'])?></span></div>
 <div class="mci-row"><span class="mci-label">Capacity</span><span class="mci-value"><?=htmlspecialchars($r['capacity'])?></span></div>
 <div class="mci-actions"><a href="class.php?update=<?=urlencode($r['hno'])?>" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i> Edit</a><a href="class.php?delete=<?=urlencode($r['hno'])?>" class="btn btn-sm btn-danger" data-confirm="Delete?"><i class="fa fa-trash"></i> Delete</a></div></div><?php endforeach;?><?php else:?><div class="empty-state"><i class="fa fa-bank"></i><h3>No Classrooms</h3></div><?php endif;?></div></div></div></div></div></div>
-<footer class="app-footer">ICST Academic Management System &copy; <?=date('Y')?></footer></div></div>
+<footer class="app-footer">Student Management System &copy; <?=date('Y')?></footer></div></div>
 <?php include_once 'includes/footer.php';?>
 <script>document.getElementById('breadcrumbCurrent').textContent='Classroom Management';</script>
 </body></html>

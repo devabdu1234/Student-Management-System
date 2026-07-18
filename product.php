@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 // Start session for navigation context
 session_start();
 // Include database connection
@@ -8,7 +8,7 @@ $products = db_fetch_all("SELECT * FROM product ORDER BY product_name");
 ?>
 <!DOCTYPE html><html lang="en" data-theme="light"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Products - ICST Academic Management</title>
+<title>Products - Student Management System</title>
 <link href="assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 <link href="assets/css/custom.css" rel="stylesheet">
@@ -16,14 +16,14 @@ $products = db_fetch_all("SELECT * FROM product ORDER BY product_name");
 </head><body>
 <div class="public-page">
 <div class="public-header">
-<div class="logo"><div class="logo-icon">IC</div><div>ICST Academic Management<small>University of Vocational Technology</small></div></div>
+<div class="logo"><div class="logo-icon">SM</div><div>Student Management System<small>University of Vocational Technology</small></div></div>
 <nav><a href="index.php">Home</a><a href="about-us.php">About</a><a href="features.php">Features</a><a href="product.php">Products</a><a href="contact-us.php">Contact</a>
 <?php if(isset($_SESSION['user'])):?><a href="dashboard.php" class="btn btn-sm btn-primary">Dashboard</a>
 <?php else:?><a href="login.php" class="btn btn-sm btn-gold">Login</a><a href="register.php" class="btn btn-sm btn-primary">Register</a>
 <?php endif;?>
 </nav></div>
 <div class="public-hero" style="background:linear-gradient(135deg,var(--bg-sidebar) 0%,#2a1a1a 100%);padding:48px 32px">
-<div class="hero-content"><h1>ICST Products</h1><p>Browse available academic products and merchandise</p></div></div>
+<div class="hero-content"><h1>Our Products</h1><p>Browse available academic products and merchandise</p></div></div>
 <div class="public-content">
 <div class="row">
 <?php if(count($products)>0):?>
@@ -42,5 +42,5 @@ $products = db_fetch_all("SELECT * FROM product ORDER BY product_name");
 <div class="col-12 text-center py-5"><i class="fa fa-cube" style="font-size:48px;color:var(--text-muted);opacity:0.4"></i><p style="color:var(--text-muted);margin-top:16px">No products available at this time.</p></div>
 <?php endif;?>
 </div></div>
-<div class="public-footer">ICST Academic Management System &copy; <?=date('Y')?></div></div>
+<div class="public-footer">Student Management System &copy; <?=date('Y')?></div></div>
 </body></html>

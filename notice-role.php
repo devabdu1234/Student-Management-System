@@ -9,7 +9,7 @@ $rows=db_fetch_all("SELECT * FROM notice WHERE odience='All' OR odience=? ORDER 
 ?>
 <!DOCTYPE html><html lang="en" data-theme="light"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Notices - ICST</title><link rel="icon" href="images/user.png"><?php include_once 'includes/header.php';?></head><body>
+<title>Notices - Student Management</title><link rel="icon" href="images/user.png"><?php include_once 'includes/header.php';?></head><body>
 <div class="app-layout"><?php include_once 'includes/sidebar.php';?>
 <div class="main-content"><?php include_once 'includes/nav-menu.php';?>
 <div class="page-content fade-in">
@@ -21,7 +21,7 @@ $rows=db_fetch_all("SELECT * FROM notice WHERE odience='All' OR odience=? ORDER 
 <span class="badge" style="background:var(--icst-gold);color:#1a1a2e;padding:4px 10px;border-radius:10px;font-size:11px"><?=htmlspecialchars($r['odience'])?></span>
 </div></div><?php endforeach;?>
 <?php else:?><div class="empty-state"><i class="fa fa-envelope-o"></i><h3>No Notices</h3><p>There are no notices for you at this time.</p></div><?php endif;?></div>
-<footer class="app-footer">ICST Academic Management &copy; <?=date('Y')?></footer></div></div>
+<footer class="app-footer">Student Management System &copy; <?=date('Y')?></footer></div></div>
 <?php include_once 'includes/footer.php';?>
 <script>document.getElementById('breadcrumbCurrent').textContent='Notices';</script>
 </body></html>

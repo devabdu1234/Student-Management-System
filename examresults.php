@@ -20,7 +20,7 @@ $rows=db_fetch_all("SELECT r.*, e.subject as exam_subject, CONCAT(s.fname,' ',s.
 ?>
 <!DOCTYPE html><html lang="en" data-theme="light"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Results - ICST Academic Management</title><link rel="icon" href="images/user.png">
+<title>Results - Student Management System</title><link rel="icon" href="images/user.png">
 <?php include_once 'includes/header.php';?></head><body>
 <div class="app-layout"><?php include_once 'includes/sidebar.php';?>
 <div class="main-content"><?php include_once 'includes/nav-menu.php';?>
@@ -47,7 +47,7 @@ $rows=db_fetch_all("SELECT r.*, e.subject as exam_subject, CONCAT(s.fname,' ',s.
 <div class="mci-row"><span class="mci-label">Marks</span><span class="mci-value"><?=$r['marks']?></span></div>
 <div class="mci-row"><span class="mci-label">Grade</span><span class="mci-value"><strong><?=htmlspecialchars($r['grade'])?></strong></span></div>
 <div class="mci-actions"><a href="examresults.php?delete=<?=$r['id']?>" class="btn btn-sm btn-danger" data-confirm="Delete?"><i class="fa fa-trash"></i> Delete</a></div></div><?php endforeach;?><?php else:?><div class="empty-state"><i class="fa fa-graduation-cap"></i><h3>No Results</h3></div><?php endif;?></div></div></div></div></div></div>
-<footer class="app-footer">ICST Academic Management System &copy; <?=date('Y')?></footer></div></div>
+<footer class="app-footer">Student Management System &copy; <?=date('Y')?></footer></div></div>
 <?php include_once 'includes/footer.php';?>
 <script>document.getElementById('breadcrumbCurrent').textContent='Exam Results';</script>
 </body></html>

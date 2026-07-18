@@ -18,14 +18,14 @@ if(isset($_POST['submit'])){
 ?>
 <!DOCTYPE html><html lang="en" data-theme="light"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Register - ICST Academic Management</title>
+<title>Register - Student Management System</title>
 <link href="assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 <link href="assets/css/custom.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head><body class="login-page">
 <div class="login-card slide-up">
-<div class="login-header"><div class="login-icon"><i class="fa fa-user-plus"></i></div><h2>Create Account</h2><p>Register for the ICST Academic portal</p></div>
+<div class="login-header"><div class="login-icon"><i class="fa fa-user-plus"></i></div><h2>Create Account</h2><p>Register for the Student Management portal</p></div>
 <div class="login-body"><?=$message?>
 <form method="post" class="needs-validation" novalidate>
 <input type="hidden" name="csrf_token" value="<?=csrf_token()?>">

@@ -28,7 +28,7 @@ $attendance_records=db_fetch_all("SELECT a.*, s.fname, s.lname FROM attendancere
 ?>
 <!DOCTYPE html><html lang="en" data-theme="light"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Attendance Report - ICST</title><link rel="icon" href="images/user.png">
+<title>Attendance Report - Student Management</title><link rel="icon" href="images/user.png">
 <?php include_once 'includes/header.php';?></head><body>
 <div class="app-layout"><?php include_once 'includes/sidebar.php';?>
 <div class="main-content"><?php include_once 'includes/nav-menu.php';?>
@@ -72,7 +72,7 @@ $attendance_records=db_fetch_all("SELECT a.*, s.fname, s.lname FROM attendancere
 </tr><?php endforeach;?><?php else:?><tr><td colspan="2" class="table-empty"><i class="fa fa-check-square-o"></i> No records yet</td></tr><?php endif;?></tbody></table></div></div></div>
 <?php endif;?>
 </div></div></div>
-<footer class="app-footer">ICST Academic Management System &copy; <?=date('Y')?></footer></div></div>
+<footer class="app-footer">Student Management System &copy; <?=date('Y')?></footer></div></div>
 <?php include_once 'includes/footer.php';?>
 <script>document.getElementById('breadcrumbCurrent').textContent='Attendance Report';</script>
 </body></html>

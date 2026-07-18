@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 // Start session and verify user authentication
 session_start(); include_once 'includes/config.php';
 if (!isset($_SESSION['user']) || ($_SESSION['role'] != 'Lecturer' && $_SESSION['role'] != 'Admin')) { header('Location: login.php'); exit; }
@@ -8,7 +8,7 @@ $products=db_fetch_all("SELECT * FROM product ORDER BY product_id");
 ?>
 <!DOCTYPE html><html lang="en" data-theme="light"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Manage Products - ICST Academic Management</title><link rel="icon" href="images/user.png">
+<title>Manage Products - Student Management System</title><link rel="icon" href="images/user.png">
 <?php include_once 'includes/header.php';?></head><body>
 <div class="app-layout"><?php include_once 'includes/sidebar.php';?>
 <div class="main-content"><?php include_once 'includes/nav-menu.php';?>
@@ -33,7 +33,7 @@ $products=db_fetch_all("SELECT * FROM product ORDER BY product_id");
 <i class="fa fa-plus-circle" style="font-size:36px;margin-bottom:12px"></i>
 <h5>Add New Product</h5></a></div></div></div>
 </div></div>
-<footer class="app-footer">ICST Academic Management System &copy; <?=date('Y')?></footer></div></div>
+<footer class="app-footer">Student Management System &copy; <?=date('Y')?></footer></div></div>
 <?php include_once 'includes/footer.php';?>
 <script>document.getElementById('breadcrumbCurrent').textContent='Manage Products';</script>
 </body></html>

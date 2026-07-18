@@ -1,9 +1,9 @@
-<?php
-/* index.php — Home / landing page for ICST Academic Management System */
+﻿<?php
+/* index.php — Home / landing page for Student Management System */
 session_start(); ?>
 <!DOCTYPE html><html lang="en" data-theme="light"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>ICST Academic Management System</title>
+<title>Student Management System</title>
 <link href="assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 <link href="assets/css/custom.css" rel="stylesheet">
@@ -11,7 +11,7 @@ session_start(); ?>
 </head><body>
 <div class="public-page">
 <div class="public-header">
-<div class="logo"><div class="logo-icon">IC</div><div>ICST Academic Management<small>University of Vocational Technology</small></div></div>
+<div class="logo"><div class="logo-icon">SM</div><div>Student Management System<small>University of Vocational Technology</small></div></div>
 <nav><a href="index.php">Home</a><a href="about-us.php">About</a><a href="features.php">Features</a><a href="product.php">Products</a><a href="contact-us.php">Contact</a>
 <?php if(isset($_SESSION['user'])):?><a href="dashboard.php" class="btn btn-sm btn-primary">Dashboard</a>
 <?php else:?><a href="login.php" class="btn btn-sm btn-gold">Login</a><a href="register.php" class="btn btn-sm btn-primary">Register</a>
@@ -70,7 +70,7 @@ session_start(); ?>
 </div>
 </div>
 <div class="public-footer">
-ICST Academic Management System &copy; <?=date('Y')?> | HDIT21193 - User Experience and Interface Design
+Student Management System &copy; <?=date('Y')?> | HDIT21193 - User Experience and Interface Design
 </div>
 </div>
 </body></html>

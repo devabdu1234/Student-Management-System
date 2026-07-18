@@ -36,7 +36,7 @@ $users=db_fetch_all("SELECT * FROM users");
 ?>
 <!DOCTYPE html><html lang="en" data-theme="light"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Users - ICST Academic Management</title><link rel="icon" href="images/user.png">
+<title>Users - Student Management System</title><link rel="icon" href="images/user.png">
 <?php include_once 'includes/header.php';?></head><body>
 <div class="app-layout"><?php include_once 'includes/sidebar.php';?>
 <div class="main-content"><?php include_once 'includes/nav-menu.php';?>
@@ -56,7 +56,7 @@ $users=db_fetch_all("SELECT * FROM users");
 <table><thead><tr><th>Email</th><th>Role</th><th>Actions</th></tr></thead>
 <tbody><?php if(count($users)>0):?><?php foreach($users as $r):?><tr><td><?=htmlspecialchars($r['email'])?></td><td><span class="badge" style="background:var(--icst-red);color:white;padding:4px 10px;border-radius:10px"><?=htmlspecialchars($r['role'])?></span></td>
 <td class="actions"><a href="user.php?delete=<?=urlencode($r['email'])?>" class="btn btn-sm btn-danger" data-confirm="Delete this user?"><i class="fa fa-trash"></i></a><a href="user.php?email=<?=urlencode($r['email'])?>" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></a></td></tr><?php endforeach;?><?php else:?><tr><td colspan="3" class="table-empty"><i class="fa fa-user-plus"></i> No users found</td></tr><?php endif;?></tbody></table></div></div></div></div></div>
-<footer class="app-footer">ICST Academic Management System &copy; <?=date('Y')?></footer></div></div>
+<footer class="app-footer">Student Management System &copy; <?=date('Y')?></footer></div></div>
 <?php include_once 'includes/footer.php';?>
 <script>document.getElementById('breadcrumbCurrent').textContent='User Management';</script>
 </body></html>

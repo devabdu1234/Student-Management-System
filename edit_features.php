@@ -25,7 +25,7 @@ if(isset($_POST['submit'])){
 ?>
 <!DOCTYPE html><html lang="en" data-theme="light"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Edit Feature - ICST Academic Management</title><link rel="icon" href="images/user.png">
+<title>Edit Feature - Student Management System</title><link rel="icon" href="images/user.png">
 <?php include_once 'includes/header.php';?></head><body>
 <div class="app-layout"><?php include_once 'includes/sidebar.php';?>
 <div class="main-content"><?php include_once 'includes/nav-menu.php';?>
@@ -43,7 +43,7 @@ if(isset($_POST['submit'])){
 <div class="form-group"><label>Image Filename</label><input name="image" type="text" class="form-control" value="<?=htmlspecialchars($image)?>"></div></div>
 <div class="form-actions"><button type="submit" name="submit" value="submit" class="btn btn-primary"><i class="fa fa-save"></i> Update Feature</button>
 <a href="manage_features.php" class="btn btn-secondary"><i class="fa fa-times"></i> Cancel</a></div></form></div></div></div>
-<footer class="app-footer">ICST Academic Management System &copy; <?=date('Y')?></footer></div></div>
+<footer class="app-footer">Student Management System &copy; <?=date('Y')?></footer></div></div>
 <?php include_once 'includes/footer.php';?>
 <script>document.getElementById('breadcrumbCurrent').textContent='Edit Feature';</script>
 </body></html>

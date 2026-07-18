@@ -25,7 +25,7 @@ $rows=db_fetch_all("SELECT * FROM parent ORDER BY pid DESC");
 ?>
 <!DOCTYPE html><html lang="en" data-theme="light"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Parents - ICST Academic Management</title><link rel="icon" href="images/user.png">
+<title>Parents - Student Management System</title><link rel="icon" href="images/user.png">
 <?php include_once 'includes/header.php';?></head><body>
 <div class="app-layout"><?php include_once 'includes/sidebar.php';?>
 <div class="main-content"><?php include_once 'includes/nav-menu.php';?>
@@ -56,7 +56,7 @@ $rows=db_fetch_all("SELECT * FROM parent ORDER BY pid DESC");
 <div class="mci-row"><span class="mci-label">NIC</span><span class="mci-value"><?=htmlspecialchars($r['nic'])?></span></div>
 <div class="mci-row"><span class="mci-label">Contact</span><span class="mci-value"><?=htmlspecialchars($r['contact'])?></span></div>
 <div class="mci-actions"><a href="parent.php?update=<?=$r['pid']?>" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i> Edit</a><a href="parent.php?delete=<?=$r['pid']?>" class="btn btn-sm btn-danger" data-confirm="Delete?"><i class="fa fa-trash"></i> Delete</a></div></div><?php endforeach;?><?php else:?><div class="empty-state"><i class="fa fa-female"></i><h3>No Parents</h3></div><?php endif;?></div></div></div></div></div></div>
-<footer class="app-footer">ICST Academic Management System &copy; <?=date('Y')?></footer></div></div>
+<footer class="app-footer">Student Management System &copy; <?=date('Y')?></footer></div></div>
 <?php include_once 'includes/footer.php';?>
 <script>document.getElementById('breadcrumbCurrent').textContent='Parent Management';</script>
 </body></html>

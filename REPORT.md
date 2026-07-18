@@ -1,7 +1,7 @@
-# HDIT21193 — User Experience and Interface Design
+﻿# HDIT21193 — User Experience and Interface Design
 ## Final Project Report
 
-**Project Title:** ICST Academic Management System  
+**Project Title:** Student Management System  
 **Module Code:** HDIT 21193  
 **Academic Year:** Year 2 – Semester 1  
 **Credit:** 3  
@@ -28,7 +28,7 @@
 
 ## 1. Introduction
 
-The ICST Academic Management System is a web-based platform developed for the Institute of Computer Science and Technology (ICST), University of Vocational Technology. The system provides a comprehensive solution for managing students, lecturers, subjects, attendance, assessments, and academic records through a role-based interface.
+The Student Management System is a web-based platform developed for the Institute of Computer Science and Technology (Student Management), University of Vocational Technology. The system provides a comprehensive solution for managing students, lecturers, subjects, attendance, assessments, and academic records through a role-based interface.
 
 The system supports four user roles — **Admin**, **Lecturer**, **Student**, and **Parent** — each with appropriate access levels and functionality. Built using HTML, CSS, JavaScript, PHP, and MySQL, the application follows a traditional server-rendered architecture with a responsive Bootstrap-based user interface.
 
@@ -82,7 +82,7 @@ The application follows a **three-tier architecture**:
 ### Folder Structure
 
 ```
-icst/
+Student Management/
 ├── includes/           # Reusable PHP components
 │   ├── config.php      # Database connection + helper functions
 │   ├── header.php      # CSS/JS assets and meta tags
@@ -165,7 +165,7 @@ Manages academic products and merchandise.
 
 ### Design Philosophy
 
-The UI follows a clean, professional aesthetic with a navy (#0d1f3c) and gold (#c8a951) colour scheme reflecting the ICST brand identity. The design prioritises:
+The UI follows a clean, professional aesthetic with a navy (#0d1f3c) and gold (#c8a951) colour scheme reflecting the Student Management brand identity. The design prioritises:
 
 - **Clarity**: Clear typography, ample whitespace, consistent layout
 - **Accessibility**: High contrast, readable fonts (Inter), responsive breakpoints
@@ -441,7 +441,7 @@ The application implements multiple security layers:
 
 ## 12. Conclusion
 
-The ICST Academic Management System successfully fulfills all HDIT21193 assignment requirements. The system provides:
+The Student Management System successfully fulfills all HDIT21193 assignment requirements. The system provides:
 
 - ✅ **10+ pages** including public, authentication, dashboard, and CRUD pages
 - ✅ **3 database tables** (users, features, product) with 10+ sample records each
@@ -462,7 +462,7 @@ The project is ready for deployment on any XAMPP environment and is prepared for
 
 ### Screenshot Checklist
 
-To complete this report, capture the following screenshots from the running application at `http://localhost/icst/` and save them in the `screenshots/` folder:
+To complete this report, capture the following screenshots from the running application at `http://localhost/Student Management/` and save them in the `screenshots/` folder:
 
 | # | Screenshot | Page/URL | Notes |
 |---|---|---|---|

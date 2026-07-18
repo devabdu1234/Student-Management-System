@@ -16,7 +16,7 @@ if ($role && $email) {
 ?>
 <!DOCTYPE html><html lang="en" data-theme="light"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Profile - ICST Academic Management</title><link rel="icon" href="images/user.png">
+<title>Profile - Student Management System</title><link rel="icon" href="images/user.png">
 <?php include_once 'includes/header.php';?></head><body>
 <div class="app-layout"><?php include_once 'includes/sidebar.php';?>
 <div class="main-content"><?php include_once 'includes/nav-menu.php';?>
@@ -37,7 +37,7 @@ if ($role && $email) {
 <?php else:?>
 <div class="card-body"><div class="empty-state"><i class="fa fa-user-circle"></i><h3>Profile Info</h3><p><?=htmlspecialchars($user)?></p></div></div>
 <?php endif;?></div></div>
-<footer class="app-footer">ICST Academic Management System &copy; <?=date('Y')?></footer></div></div>
+<footer class="app-footer">Student Management System &copy; <?=date('Y')?></footer></div></div>
 <?php include_once 'includes/footer.php';?>
 <script>document.getElementById('breadcrumbCurrent').textContent='My Profile';</script>
 </body></html>

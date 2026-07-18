@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /* contact-us.php — Contact form page for public inquiries */
 session_start(); $sent='';
 if(isset($_POST['submit'])){
@@ -6,7 +6,7 @@ if(isset($_POST['submit'])){
   $sent='<div class="alert alert-success"><i class="fa fa-check-circle"></i> Thank you! Your message has been sent.</div>';} ?>
 <!DOCTYPE html><html lang="en" data-theme="light"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Contact Us - ICST Academic Management</title>
+<title>Contact Us - Student Management System</title>
 <link href="assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 <link href="assets/css/custom.css" rel="stylesheet">
@@ -14,10 +14,10 @@ if(isset($_POST['submit'])){
 </head><body>
 <div class="public-page">
 <div class="public-header">
-<div class="logo"><div class="logo-icon">IC</div><div>ICST Academic Management<small>University of Vocational Technology</small></div></div>
+<div class="logo"><div class="logo-icon">SM</div><div>Student Management System<small>University of Vocational Technology</small></div></div>
 <nav><a href="index.php">Home</a><a href="about-us.php">About</a><a href="features.php">Features</a><a href="product.php">Products</a><a href="contact-us.php">Contact</a><a href="login.php" class="btn btn-sm btn-gold">Login</a></nav></div>
 <div class="public-hero" style="background:linear-gradient(135deg,var(--bg-sidebar) 0%,#2a1a1a 100%);padding:48px 32px">
-<div class="hero-content"><h1>Contact Us</h1><p>Get in touch with the ICST team</p></div></div>
+<div class="hero-content"><h1>Contact Us</h1><p>Get in touch with our team</p></div></div>
 <div class="public-content">
 <div class="row justify-content-center">
 <div class="col-md-6">
@@ -31,9 +31,9 @@ if(isset($_POST['submit'])){
 </form></div></div></div>
 <div class="col-md-4">
 <div class="card"><div class="card-body">
-<h5><i class="fa fa-map-marker" style="color:var(--icst-red)"></i> Address</h5><p style="font-size:13px;color:var(--text-muted)">ICST, University of Vocational Technology<br>Colombo, Sri Lanka</p>
+<h5><i class="fa fa-map-marker" style="color:var(--icst-red)"></i> Address</h5><p style="font-size:13px;color:var(--text-muted)">Student Management System, University of Vocational Technology<br>Colombo, Sri Lanka</p>
 <h5><i class="fa fa-phone" style="color:var(--icst-gold)"></i> Phone</h5><p style="font-size:13px;color:var(--text-muted)">+94 11 234 5678</p>
-<h5><i class="fa fa-envelope" style="color:var(--icst-red)"></i> Email</h5><p style="font-size:13px;color:var(--text-muted)">info@icst.ac.lk</p>
+<h5><i class="fa fa-envelope" style="color:var(--icst-red)"></i> Email</h5><p style="font-size:13px;color:var(--text-muted)">info@studentmanagement.ac.lk</p>
 </div></div></div></div></div>
-<div class="public-footer">ICST Academic Management System &copy; <?=date('Y')?></div></div>
+<div class="public-footer">Student Management System &copy; <?=date('Y')?></div></div>
 </body></html>

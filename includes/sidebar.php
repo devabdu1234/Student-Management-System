@@ -1,9 +1,9 @@
 <div id="sidebarOverlay" class="sidebar-overlay"></div>
 <aside id="sidebar" class="sidebar">
   <div class="sidebar-brand">
-    <div class="brand-icon">IC</div>
+    <div class="brand-icon">SM</div>
     <div class="brand-text">
-      ICST Academic Management
+      Student Management System
       <small>University of Vocational Technology</small>
     </div>
   </div>

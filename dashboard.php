@@ -23,7 +23,7 @@ $total_classrooms = db_fetch("SELECT COUNT(*) as c FROM classroom")['c'] ?? 0;
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <title>Dashboard - ICST Academic Management</title>
+  <title>Dashboard - Student Management System</title>
   <link rel="icon" href="images/user.png">
   <?php include_once 'includes/header.php'; ?>
   <style>
@@ -172,7 +172,7 @@ $total_classrooms = db_fetch("SELECT COUNT(*) as c FROM classroom")['c'] ?? 0;
         </div>
       </div>
       <footer class="app-footer">
-        ICST Academic Management System &copy; <?= date('Y') ?>. All Rights Reserved.
+        Student Management System &copy; <?= date('Y') ?>. All Rights Reserved.
       </footer>
     </div>
   </div>

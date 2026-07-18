@@ -64,7 +64,7 @@ if (isset($_POST['submit'])) {
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <title>Login - ICST Academic Management System</title>
+  <title>Login - Student Management System</title>
   <link rel="icon" href="images/user.png">
   <link href="assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
@@ -78,7 +78,7 @@ if (isset($_POST['submit'])) {
         <i class="fa fa-institution"></i>
       </div>
       <h2>Welcome Back</h2>
-      <p>Sign in to your ICST Academic portal</p>
+      <p>Sign in to your Student Management portal</p>
     </div>
     <div class="login-body">
       <?= $message ?>
@@ -86,7 +86,7 @@ if (isset($_POST['submit'])) {
 <input type="hidden" name="csrf_token" value="<?=csrf_token()?>">
         <div class="form-group">
           <label for="loginEmail">Email Address <span class="required">*</span></label>
-          <input name="email" type="email" id="loginEmail" class="form-control" placeholder="you@icst.ac.lk" required autocomplete="email">
+          <input name="email" type="email" id="loginEmail" class="form-control" placeholder="you@studentmanagement.ac.lk" required autocomplete="email">
           <div class="form-error"></div>
         </div>
         <div class="form-group">
@@ -100,9 +100,9 @@ if (isset($_POST['submit'])) {
       </form>
     </div>
     <div class="login-footer">
-      <p>ICST Academic Management System &copy; <?= date('Y') ?></p>
+      <p>Student Management System &copy; <?= date('Y') ?></p>
       <p style="font-size:11px;margin-top:4px;color:var(--text-muted">
-        admin@icst.ac.lk / 1234 (Admin) &bull; lecturer@icst.ac.lk / 1234 (Lecturer) &bull; kasun@icst.ac.lk / 1234 (Student)
+        admin@Student Management.ac.lk / 1234 (Admin) &bull; lecturer@Student Management.ac.lk / 1234 (Lecturer) &bull; kasun@Student Management.ac.lk / 1234 (Student)
       </p>
     </div>
   </div>

@@ -9,7 +9,7 @@ $days=['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
 ?>
 <!DOCTYPE html><html lang="en" data-theme="light"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>My Schedule - ICST</title><link rel="icon" href="images/user.png"><?php include_once 'includes/header.php';?></head><body>
+<title>My Schedule - Student Management</title><link rel="icon" href="images/user.png"><?php include_once 'includes/header.php';?></head><body>
 <div class="app-layout"><?php include_once 'includes/sidebar.php';?>
 <div class="main-content"><?php include_once 'includes/nav-menu.php';?>
 <div class="page-content fade-in">
@@ -25,7 +25,7 @@ $days=['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
 <div class="mci-row"><span class="mci-label">Room</span><span class="mci-value"><?=htmlspecialchars($r['class'])?></span></div>
 <div class="mci-row"><span class="mci-label">Time</span><span class="mci-value"><?=htmlspecialchars($r['stime'])?></span></div></div><?php endforeach;endif;endforeach;?></div></div></div></div>
 <?php else:?><div class="empty-state"><i class="fa fa-calendar"></i><h3>No Schedule</h3><p>Your class schedule has not been published yet.</p></div><?php endif;?></div>
-<footer class="app-footer">ICST Academic Management &copy; <?=date('Y')?></footer></div></div>
+<footer class="app-footer">Student Management System &copy; <?=date('Y')?></footer></div></div>
 <?php include_once 'includes/footer.php';?>
 <script>document.getElementById('breadcrumbCurrent').textContent='My Schedule';</script>
 </body></html>

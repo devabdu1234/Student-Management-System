@@ -60,7 +60,7 @@ $parents = db_fetch_all("SELECT * FROM parent");
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Students - ICST Academic Management</title>
+  <title>Students - Student Management System</title>
   <link rel="icon" href="images/user.png">
   <?php include_once 'includes/header.php'; ?>
 </head>
@@ -221,7 +221,7 @@ $parents = db_fetch_all("SELECT * FROM parent");
           </div>
         </div>
       </div>
-      <footer class="app-footer">ICST Academic Management System &copy; <?= date('Y') ?></footer>
+      <footer class="app-footer">Student Management System &copy; <?= date('Y') ?></footer>
     </div>
   </div>
   <?php include_once 'includes/footer.php'; ?>

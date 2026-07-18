@@ -17,7 +17,7 @@ $rows=db_fetch_all("SELECT * FROM notice ORDER BY id DESC");
 ?>
 <!DOCTYPE html><html lang="en" data-theme="light"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Notices - ICST Academic Management</title><link rel="icon" href="images/user.png">
+<title>Notices - Student Management System</title><link rel="icon" href="images/user.png">
 <?php include_once 'includes/header.php';?></head><body>
 <div class="app-layout"><?php include_once 'includes/sidebar.php';?>
 <div class="main-content"><?php include_once 'includes/nav-menu.php';?>
@@ -40,7 +40,7 @@ $rows=db_fetch_all("SELECT * FROM notice ORDER BY id DESC");
 <div class="mci-row"><span class="mci-label">Notice</span><span class="mci-value"><?=htmlspecialchars(substr($r['notice'],0,80))?></span></div>
 <div class="mci-row"><span class="mci-label">Date</span><span class="mci-value"><?=htmlspecialchars($r['date'])?></span></div>
 <div class="mci-actions"><a href="notice.php?delete=<?=$r['id']?>" class="btn btn-sm btn-danger" data-confirm="Delete?"><i class="fa fa-trash"></i> Delete</a></div></div><?php endforeach;?><?php else:?><div class="empty-state"><i class="fa fa-envelope-o"></i><h3>No Notices</h3></div><?php endif;?></div></div></div></div></div></div>
-<footer class="app-footer">ICST Academic Management System &copy; <?=date('Y')?></footer></div></div>
+<footer class="app-footer">Student Management System &copy; <?=date('Y')?></footer></div></div>
 <?php include_once 'includes/footer.php';?>
 <script>document.getElementById('breadcrumbCurrent').textContent='Notice Management';</script>
 </body></html>

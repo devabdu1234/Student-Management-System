@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 // Start session and verify user authentication
 session_start(); include_once 'includes/config.php';
 if (!isset($_SESSION['user']) || ($_SESSION['role'] != 'Lecturer' && $_SESSION['role'] != 'Admin')) { header('Location: login.php'); exit; }
@@ -17,7 +17,7 @@ if($id){
 ?>
 <!DOCTYPE html><html lang="en" data-theme="light"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Delete Product - ICST Academic Management</title><link rel="icon" href="images/user.png">
+<title>Delete Product - Student Management System</title><link rel="icon" href="images/user.png">
 <?php include_once 'includes/header.php';?></head><body>
 <div class="app-layout"><?php include_once 'includes/sidebar.php';?>
 <div class="main-content"><?php include_once 'includes/nav-menu.php';?>
@@ -26,7 +26,7 @@ if($id){
 <?=$message?>
 <a href="manage_product.php" class="btn btn-primary"><i class="fa fa-arrow-left"></i> Back to Products</a>
 </div>
-<footer class="app-footer">ICST Academic Management System &copy; <?=date('Y')?></footer></div></div>
+<footer class="app-footer">Student Management System &copy; <?=date('Y')?></footer></div></div>
 <?php include_once 'includes/footer.php';?>
 <script>document.getElementById('breadcrumbCurrent').textContent='Delete Product';</script>
 </body></html>

@@ -14,7 +14,7 @@ $total_notices = db_fetch("SELECT COUNT(*) as c FROM notice")['c']??0;
 ?>
 <!DOCTYPE html><html lang="en" data-theme="light"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Admin Dashboard - ICST</title><link rel="icon" href="images/user.png">
+<title>Admin Dashboard - Student Management</title><link rel="icon" href="images/user.png">
 <?php include_once 'includes/header.php';?></head><body>
 <div class="app-layout"><?php include_once 'includes/sidebar.php';?>
 <div class="main-content"><?php include_once 'includes/nav-menu.php';?>
@@ -34,7 +34,7 @@ $total_notices = db_fetch("SELECT COUNT(*) as c FROM notice")['c']??0;
 <a href="student.php" class="quick-action-item"><i class="fa fa-user-plus"></i> Students</a>
 <a href="exam.php" class="quick-action-item"><i class="fa fa-line-chart"></i> Assessments</a>
 </div></div>
-<footer class="app-footer">ICST Academic Management System &copy; <?=date('Y')?></footer></div></div>
+<footer class="app-footer">Student Management System &copy; <?=date('Y')?></footer></div></div>
 <?php include_once 'includes/footer.php';?>
 <script>document.getElementById('breadcrumbCurrent').textContent='Admin Dashboard';</script>
 </body></html>

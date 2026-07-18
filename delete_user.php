@@ -10,7 +10,7 @@ if(isset($_GET['email'])){
 ?>
 <!DOCTYPE html><html lang="en" data-theme="light"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Delete User - ICST</title><link rel="icon" href="images/user.png">
+<title>Delete User - Student Management</title><link rel="icon" href="images/user.png">
 <?php include_once 'includes/header.php';?></head><body>
 <div class="app-layout"><?php include_once 'includes/sidebar.php';?>
 <div class="main-content"><?php include_once 'includes/nav-menu.php';?>
@@ -18,7 +18,7 @@ if(isset($_GET['email'])){
 <div class="page-header"><h1 data-page-title>Delete User</h1></div>
 <div class="alert alert-success alert-auto"><i class="fa fa-check-circle"></i> User has been deleted.</div>
 <a href="manage_user.php" class="btn btn-primary"><i class="fa fa-arrow-left"></i> Back</a></div>
-<footer class="app-footer">ICST Academic Management System &copy; <?=date('Y')?></footer></div></div>
+<footer class="app-footer">Student Management System &copy; <?=date('Y')?></footer></div></div>
 <?php include_once 'includes/footer.php';?>
 <script>document.getElementById('breadcrumbCurrent').textContent='Delete User';</script>
 </body></html>
