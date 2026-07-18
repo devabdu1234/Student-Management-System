@@ -1,4 +1,6 @@
-<?php session_start(); include_once 'config.php'; $message='';
+﻿<?php
+/* register.php — User self-registration page (Student, Parent, Lecturer) */
+session_start(); include_once 'includes/config.php'; $message='';
 if(isset($_POST['submit'])){
   // Input sanitization
   $fname=sanitize($_POST['fname']??'');$lname=sanitize($_POST['lname']??'');

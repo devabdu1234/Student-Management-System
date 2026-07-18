@@ -1,6 +1,8 @@
-<?php
+﻿<?php
+/* student.php — Add, update, delete, and list student records with classroom/parent assignment */
 session_start();
-include_once 'database.php';
+include_once 'includes/config.php';
+// Redirect unauthenticated or non-admin users
 if (!isset($_SESSION['user']) || ($_SESSION['role'] != 'Lecturer' && $_SESSION['role'] != 'Admin')) {
   header('Location: logout.php');
   exit;
@@ -11,6 +13,7 @@ $message = '';
 $is_update = isset($_GET['update']);
 
 if ($is_update) {
+  // Fetch existing student for editing
   $row = db_fetch("SELECT * FROM student WHERE sid = ?", [$_GET['update']]);
   if ($row) {
     $sid = $row['sid']; $fname = $row['fname']; $lname = $row['lname'];
@@ -20,6 +23,7 @@ if ($is_update) {
   }
 }
 
+// Process form submission for add/update
 if (isset($_POST['submit'])) {
   $sid = $_POST['sid']; $fname = $_POST['fname']; $lname = $_POST['lname'];
   $email = $_POST['email']; $classroom = $_POST['classroom'];
@@ -28,10 +32,12 @@ if (isset($_POST['submit'])) {
 
   try {
     if ($is_update) {
+      // Update existing student record
       db_query("UPDATE student SET fname=?, lname=?, bday=?, address=?, gender=?, parent=?, classroom=?, email=? WHERE sid=?",
         [$fname, $lname, $dob, $address, $gender, $parent, $classroom, $email, $sid]);
       $message = '<div class="alert alert-success alert-auto"><i class="fa fa-check-circle"></i> Student updated successfully!</div>';
     } else {
+      // Insert new student record
       db_query("INSERT INTO student (sid, fname, lname, bday, address, gender, parent, classroom, email) VALUES (?,?,?,?,?,?,?,?,?)",
         [$sid, $fname, $lname, $dob, $address, $gender, $parent, $classroom, $email]);
       $message = '<div class="alert alert-success alert-auto"><i class="fa fa-check-circle"></i> Student added successfully!</div>';
@@ -40,9 +46,11 @@ if (isset($_POST['submit'])) {
     $message = '<div class="alert alert-danger"><i class="fa fa-exclamation-triangle"></i> Error: ' . htmlspecialchars($e->getMessage()) . '</div>';
   }
 }
+// Process delete request
 if (isset($_GET['delete'])) {
   try { db_query("DELETE FROM student WHERE sid=?", [$_GET['delete']]); $message='<div class="alert alert-success alert-auto"><i class="fa fa-check-circle"></i> Student deleted!</div>'; } catch (Exception $e) { $message='<div class="alert alert-danger"><i class="fa fa-exclamation-triangle"></i> '.htmlspecialchars($e->getMessage()).'</div>'; }
 }
+// Retrieve data for form dropdowns and table listing
 $students = db_fetch_all("SELECT * FROM student ORDER BY sid DESC");
 $classrooms = db_fetch_all("SELECT * FROM classroom");
 $parents = db_fetch_all("SELECT * FROM parent");
@@ -54,13 +62,13 @@ $parents = db_fetch_all("SELECT * FROM parent");
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Students - ICST Academic Management</title>
   <link rel="icon" href="images/user.png">
-  <?php include_once 'header.php'; ?>
+  <?php include_once 'includes/header.php'; ?>
 </head>
 <body>
   <div class="app-layout">
-    <?php include_once 'sidebar.php'; ?>
+    <?php include_once 'includes/sidebar.php'; ?>
     <div class="main-content">
-      <?php include_once 'nav-menu.php'; ?>
+      <?php include_once 'includes/nav-menu.php'; ?>
       <div class="page-content fade-in">
         <div class="page-header">
           <h1 data-page-title>Student Management</h1>
@@ -216,7 +224,7 @@ $parents = db_fetch_all("SELECT * FROM parent");
       <footer class="app-footer">ICST Academic Management System &copy; <?= date('Y') ?></footer>
     </div>
   </div>
-  <?php include_once 'footer.php'; ?>
+  <?php include_once 'includes/footer.php'; ?>
   <script>
     document.getElementById('breadcrumbCurrent').textContent = 'Student Management';
   </script>

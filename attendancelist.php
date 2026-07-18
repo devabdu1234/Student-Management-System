@@ -1,5 +1,7 @@
-<?php
-session_start(); include_once 'database.php';
+﻿<?php
+/* attendancelist.php — Mark and view attendance for a specific session (per-classroom) */
+session_start(); include_once 'includes/config.php';
+// Redirect unauthenticated or non-admin users
 if (!isset($_SESSION['user']) || ($_SESSION['role'] != 'Lecturer' && $_SESSION['role'] != 'Admin')) { header('Location: logout.php'); exit; }
 $message='';
 // Sanitize all GET parameters before use
@@ -9,7 +11,7 @@ $aid=(int)($_GET['aid']??0);$class=htmlspecialchars($_GET['class']??'');$date=ht
 $existing=db_fetch("SELECT COUNT(*) as c FROM attendancereport WHERE aid=?",[$aid]);
 $already_marked=$existing['c']>0;
 
-// Mark attendance
+// Mark attendance for each student in the session
 if(isset($_POST['submitatt'])){
   try{
     foreach($_POST['att'] as $id=>$att){
@@ -20,15 +22,16 @@ if(isset($_POST['submitatt'])){
   }catch(Exception $e){$message='<div class="alert alert-danger"><i class="fa fa-exclamation-triangle"></i> '.htmlspecialchars($e->getMessage()).'</div>';}
 }
 
+// Fetch students in the class and existing attendance records
 $students=db_fetch_all("SELECT * FROM student WHERE classroom=?",[$class]);
 $attendance_records=db_fetch_all("SELECT a.*, s.fname, s.lname FROM attendancereport a LEFT JOIN student s ON a.sid=s.sid WHERE a.aid=?",[$aid]);
 ?>
 <!DOCTYPE html><html lang="en" data-theme="light"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Attendance Report - ICST</title><link rel="icon" href="images/user.png">
-<?php include_once 'header.php';?></head><body>
-<div class="app-layout"><?php include_once 'sidebar.php';?>
-<div class="main-content"><?php include_once 'nav-menu.php';?>
+<?php include_once 'includes/header.php';?></head><body>
+<div class="app-layout"><?php include_once 'includes/sidebar.php';?>
+<div class="main-content"><?php include_once 'includes/nav-menu.php';?>
 <div class="page-content fade-in">
 <div class="page-header"><h1 data-page-title>Attendance Report</h1><p>Session: <?=htmlspecialchars($subject)?> | <?=htmlspecialchars($date)?> | <?=htmlspecialchars($stime)?></p></div>
 <?=$message?>
@@ -70,6 +73,6 @@ $attendance_records=db_fetch_all("SELECT a.*, s.fname, s.lname FROM attendancere
 <?php endif;?>
 </div></div></div>
 <footer class="app-footer">ICST Academic Management System &copy; <?=date('Y')?></footer></div></div>
-<?php include_once 'footer.php';?>
+<?php include_once 'includes/footer.php';?>
 <script>document.getElementById('breadcrumbCurrent').textContent='Attendance Report';</script>
 </body></html>

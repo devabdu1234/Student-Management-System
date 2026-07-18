@@ -1,21 +1,26 @@
-<?php
-session_start(); include_once 'database.php';
+﻿<?php
+/* notice.php — Send and manage broadcast notices targeted to specific audiences */
+session_start(); include_once 'includes/config.php';
+// Redirect unauthenticated or non-admin users
 if (!isset($_SESSION['user']) || ($_SESSION['role'] != 'Lecturer' && $_SESSION['role'] != 'Admin')) { header('Location: logout.php'); exit; }
 $message='';
+// Process delete request
 if(isset($_GET['delete'])){try{db_query("DELETE FROM notice WHERE id=?",[$_GET['delete']]);$message='<div class="alert alert-success alert-auto"><i class="fa fa-check-circle"></i> Notice deleted!</div>';}catch(Exception $e){}}
+// Process form submission to send a new notice
 if(isset($_POST['submit'])){
   $notice=$_POST['notice'];$odience=$_POST['odience'];
   try{db_query("INSERT INTO notice(notice,odience,`date`) VALUES(?,?,NOW())",[$notice,$odience]);$message='<div class="alert alert-success alert-auto"><i class="fa fa-check-circle"></i> Notice sent!</div>';}
   catch(Exception $e){$message='<div class="alert alert-danger"><i class="fa fa-exclamation-triangle"></i> '.htmlspecialchars($e->getMessage()).'</div>';}
 }
+// Retrieve all notices for history table
 $rows=db_fetch_all("SELECT * FROM notice ORDER BY id DESC");
 ?>
 <!DOCTYPE html><html lang="en" data-theme="light"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Notices - ICST Academic Management</title><link rel="icon" href="images/user.png">
-<?php include_once 'header.php';?></head><body>
-<div class="app-layout"><?php include_once 'sidebar.php';?>
-<div class="main-content"><?php include_once 'nav-menu.php';?>
+<?php include_once 'includes/header.php';?></head><body>
+<div class="app-layout"><?php include_once 'includes/sidebar.php';?>
+<div class="main-content"><?php include_once 'includes/nav-menu.php';?>
 <div class="page-content fade-in">
 <div class="page-header"><h1 data-page-title>Notice Management</h1><p>Send notices to students and parents</p></div>
 <?=$message?>
@@ -36,6 +41,6 @@ $rows=db_fetch_all("SELECT * FROM notice ORDER BY id DESC");
 <div class="mci-row"><span class="mci-label">Date</span><span class="mci-value"><?=htmlspecialchars($r['date'])?></span></div>
 <div class="mci-actions"><a href="notice.php?delete=<?=$r['id']?>" class="btn btn-sm btn-danger" data-confirm="Delete?"><i class="fa fa-trash"></i> Delete</a></div></div><?php endforeach;?><?php else:?><div class="empty-state"><i class="fa fa-envelope-o"></i><h3>No Notices</h3></div><?php endif;?></div></div></div></div></div></div>
 <footer class="app-footer">ICST Academic Management System &copy; <?=date('Y')?></footer></div></div>
-<?php include_once 'footer.php';?>
+<?php include_once 'includes/footer.php';?>
 <script>document.getElementById('breadcrumbCurrent').textContent='Notice Management';</script>
 </body></html>

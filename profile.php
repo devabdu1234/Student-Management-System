@@ -1,5 +1,7 @@
-<?php
-session_start(); include_once 'database.php';
+﻿<?php
+/* profile.php — Display current user's profile information from role-specific table */
+session_start(); include_once 'includes/config.php';
+// Redirect unauthenticated users
 if (!isset($_SESSION['user'])) { header('Location: login.php'); exit; }
 $role = $_SESSION['role']??'';
 $email = $_SESSION['user_email']??'';
@@ -7,6 +9,7 @@ $user = $_SESSION['user']??'';
 $info = [];
 
 if ($role && $email) {
+  // Fetch profile data from role-specific table
   $table = strtolower($role);
   $info = db_fetch("SELECT * FROM `$table` WHERE email=?",[$email]) ?: [];
 }
@@ -14,9 +17,9 @@ if ($role && $email) {
 <!DOCTYPE html><html lang="en" data-theme="light"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Profile - ICST Academic Management</title><link rel="icon" href="images/user.png">
-<?php include_once 'header.php';?></head><body>
-<div class="app-layout"><?php include_once 'sidebar.php';?>
-<div class="main-content"><?php include_once 'nav-menu.php';?>
+<?php include_once 'includes/header.php';?></head><body>
+<div class="app-layout"><?php include_once 'includes/sidebar.php';?>
+<div class="main-content"><?php include_once 'includes/nav-menu.php';?>
 <div class="page-content fade-in">
 <div class="page-header"><h1 data-page-title>My Profile</h1></div>
 <div class="card" style="max-width:600px">
@@ -35,6 +38,6 @@ if ($role && $email) {
 <div class="card-body"><div class="empty-state"><i class="fa fa-user-circle"></i><h3>Profile Info</h3><p><?=htmlspecialchars($user)?></p></div></div>
 <?php endif;?></div></div>
 <footer class="app-footer">ICST Academic Management System &copy; <?=date('Y')?></footer></div></div>
-<?php include_once 'footer.php';?>
+<?php include_once 'includes/footer.php';?>
 <script>document.getElementById('breadcrumbCurrent').textContent='My Profile';</script>
 </body></html>

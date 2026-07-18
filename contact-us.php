@@ -1,5 +1,9 @@
-<?php session_start(); $sent='';
-if(isset($_POST['submit'])){$sent='<div class="alert alert-success"><i class="fa fa-check-circle"></i> Thank you! Your message has been sent.</div>';} ?>
+<?php
+/* contact-us.php — Contact form page for public inquiries */
+session_start(); $sent='';
+if(isset($_POST['submit'])){
+  // Process contact form submission
+  $sent='<div class="alert alert-success"><i class="fa fa-check-circle"></i> Thank you! Your message has been sent.</div>';} ?>
 <!DOCTYPE html><html lang="en" data-theme="light"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Contact Us - ICST Academic Management</title>
@@ -11,7 +15,7 @@ if(isset($_POST['submit'])){$sent='<div class="alert alert-success"><i class="fa
 <div class="public-page">
 <div class="public-header">
 <div class="logo"><div class="logo-icon">IC</div><div>ICST Academic Management<small>University of Vocational Technology</small></div></div>
-<nav><a href="index.php">Home</a><a href="about-us.php">About</a><a href="features.php">Features</a><a href="contact-us.php">Contact</a><a href="login.php" class="btn btn-sm btn-gold">Login</a></nav></div>
+<nav><a href="index.php">Home</a><a href="about-us.php">About</a><a href="features.php">Features</a><a href="product.php">Products</a><a href="contact-us.php">Contact</a><a href="login.php" class="btn btn-sm btn-gold">Login</a></nav></div>
 <div class="public-hero" style="background:linear-gradient(135deg,var(--bg-sidebar) 0%,#2a1a1a 100%);padding:48px 32px">
 <div class="hero-content"><h1>Contact Us</h1><p>Get in touch with the ICST team</p></div></div>
 <div class="public-content">

@@ -1,14 +1,17 @@
-<?php
-session_start(); include_once 'database.php';
+﻿<?php
+/* schedule-stu.php — Student-facing weekly class timetable view */
+session_start(); include_once 'includes/config.php';
+// Redirect non-student users
 if (!isset($_SESSION['user']) || $_SESSION['role'] != 'Student') { header('Location: login.php'); exit; }
+// Retrieve all schedules ordered by day and time with subject/teacher names
 $rows=db_fetch_all("SELECT s.*, sub.title as sub_title, t.fname as t_fname, t.lname as t_lname FROM schedule s LEFT JOIN subject sub ON s.subject=sub.sid LEFT JOIN teacher t ON s.teacher=t.tid ORDER BY FIELD(s.day,'Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'), s.stime");
 $days=['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
 ?>
 <!DOCTYPE html><html lang="en" data-theme="light"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>My Schedule - ICST</title><link rel="icon" href="images/user.png"><?php include_once 'header.php';?></head><body>
-<div class="app-layout"><?php include_once 'sidebar.php';?>
-<div class="main-content"><?php include_once 'nav-menu.php';?>
+<title>My Schedule - ICST</title><link rel="icon" href="images/user.png"><?php include_once 'includes/header.php';?></head><body>
+<div class="app-layout"><?php include_once 'includes/sidebar.php';?>
+<div class="main-content"><?php include_once 'includes/nav-menu.php';?>
 <div class="page-content fade-in">
 <div class="page-header"><h1 data-page-title>My Schedule</h1><p>Your weekly class timetable</p></div>
 <?php if(count($rows)>0):?>
@@ -23,6 +26,6 @@ $days=['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
 <div class="mci-row"><span class="mci-label">Time</span><span class="mci-value"><?=htmlspecialchars($r['stime'])?></span></div></div><?php endforeach;endif;endforeach;?></div></div></div></div>
 <?php else:?><div class="empty-state"><i class="fa fa-calendar"></i><h3>No Schedule</h3><p>Your class schedule has not been published yet.</p></div><?php endif;?></div>
 <footer class="app-footer">ICST Academic Management &copy; <?=date('Y')?></footer></div></div>
-<?php include_once 'footer.php';?>
+<?php include_once 'includes/footer.php';?>
 <script>document.getElementById('breadcrumbCurrent').textContent='My Schedule';</script>
 </body></html>

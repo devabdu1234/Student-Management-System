@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" fill="none">
+  <rect width="800" height="400" fill="url(#hero-grad)"/>
+  <circle cx="650" cy="100" r="120" fill="rgba(255,255,255,0.05)"/>
+  <circle cx="700" cy="80" r="80" fill="rgba(255,255,255,0.08)"/>
+  <circle cx="150" cy="320" r="100" fill="rgba(255,255,255,0.05)"/>
+  <rect x="100" y="120" width="60" height="80" rx="8" fill="rgba(255,255,255,0.1)"/>
+  <rect x="180" y="140" width="60" height="60" rx="8" fill="rgba(255,255,255,0.08)"/>
+  <rect x="260" y="110" width="60" height="90" rx="8" fill="rgba(255,255,255,0.12)"/>
+  <path d="M500 150 L560 120 L620 150 L620 250 L560 280 L500 250 Z" fill="rgba(200,169,81,0.3)" stroke="rgba(200,169,81,0.5)" stroke-width="2"/>
+  <path d="M520 170 L560 150 L600 170 L600 240 L560 260 L520 240 Z" fill="rgba(255,255,255,0.1)"/>
+  <text x="50" y="180" font-family="Inter,sans-serif" font-size="32" font-weight="800" fill="white">Modern Academic</text>
+  <text x="50" y="220" font-family="Inter,sans-serif" font-size="32" font-weight="800" fill="#c8a951">Management Platform</text>
+  <text x="50" y="260" font-family="Inter,sans-serif" font-size="14" fill="rgba(255,255,255,0.6)">Streamline your educational operations</text>
+  <defs><linearGradient id="hero-grad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0d1f3c"/><stop offset="100%" stop-color="#1a1a2e"/></linearGradient></defs>
+</svg>

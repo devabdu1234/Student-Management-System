@@ -1,22 +1,27 @@
-<?php
-session_start(); include_once 'database.php';
+﻿<?php
+/* attendance.php — Create and manage attendance sessions linked to schedules */
+session_start(); include_once 'includes/config.php';
+// Redirect unauthenticated or non-admin users
 if (!isset($_SESSION['user']) || ($_SESSION['role'] != 'Lecturer' && $_SESSION['role'] != 'Admin')) { header('Location: logout.php'); exit; }
 $message='';
+// Process form submission to create a new attendance session
 if(isset($_POST['submit'])){
   $schedule=$_POST['schedule'];$date=$_POST['date'];
   try{db_query("INSERT INTO attendance(`date`,sid) VALUES(?,?)",[$date,$schedule]);$message='<div class="alert alert-success alert-auto"><i class="fa fa-check-circle"></i> Attendance session created!</div>';}
   catch(Exception $e){$message='<div class="alert alert-danger"><i class="fa fa-exclamation-triangle"></i> '.htmlspecialchars($e->getMessage()).'</div>';}
 }
+// Process delete request
 if(isset($_GET['delete'])){try{db_query("DELETE FROM attendance WHERE aid=?",[$_GET['delete']]);$message='<div class="alert alert-success alert-auto"><i class="fa fa-check-circle"></i> Attendance session deleted!</div>';}catch(Exception $e){$message='<div class="alert alert-danger"><i class="fa fa-exclamation-triangle"></i> '.htmlspecialchars($e->getMessage()).'</div>';}}
+// Retrieve schedules and attendance sessions for display
 $schedules=db_fetch_all("SELECT s.*, sub.title as sub_title FROM schedule s LEFT JOIN subject sub ON s.subject=sub.sid ORDER BY s.id DESC");
 $attendances=db_fetch_all("SELECT a.*, s.subject, s.class, s.stime, sub.title as sub_title FROM attendance a LEFT JOIN schedule s ON a.sid=s.id LEFT JOIN subject sub ON s.subject=sub.sid ORDER BY a.aid DESC");
 ?>
 <!DOCTYPE html><html lang="en" data-theme="light"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Attendance - ICST Academic Management</title><link rel="icon" href="images/user.png">
-<?php include_once 'header.php';?></head><body>
-<div class="app-layout"><?php include_once 'sidebar.php';?>
-<div class="main-content"><?php include_once 'nav-menu.php';?>
+<?php include_once 'includes/header.php';?></head><body>
+<div class="app-layout"><?php include_once 'includes/sidebar.php';?>
+<div class="main-content"><?php include_once 'includes/nav-menu.php';?>
 <div class="page-content fade-in">
 <div class="page-header"><h1 data-page-title>Attendance Management</h1><p>Create attendance sessions and mark student attendance</p></div>
 <?=$message?>
@@ -38,6 +43,6 @@ $attendances=db_fetch_all("SELECT a.*, s.subject, s.class, s.stime, sub.title as
 <div class="mci-row"><span class="mci-label">Class</span><span class="mci-value"><?=htmlspecialchars($r['class'])?></span></div>
 <div class="mci-actions"><a href="attendancelist.php?aid=<?=$r['aid']?>&class=<?=urlencode($r['class'])?>&subject=<?=urlencode($r['subject'])?>&date=<?=urlencode($r['date'])?>&stime=<?=urlencode($r['stime'])?>" class="btn btn-sm btn-gold"><i class="fa fa-check"></i> Manage</a><a href="attendance.php?delete=<?=$r['aid']?>" class="btn btn-sm btn-danger" data-confirm="Delete?"><i class="fa fa-trash"></i> Delete</a></div></div><?php endforeach;?><?php else:?><div class="empty-state"><i class="fa fa-check-square-o"></i><h3>No Sessions</h3></div><?php endif;?></div></div></div></div></div></div>
 <footer class="app-footer">ICST Academic Management System &copy; <?=date('Y')?></footer></div></div>
-<?php include_once 'footer.php';?>
+<?php include_once 'includes/footer.php';?>
 <script>document.getElementById('breadcrumbCurrent').textContent='Attendance Management';</script>
 </body></html>

@@ -1,4 +1,6 @@
-<?php session_start(); ?>
+<?php
+/* index.php — Home / landing page for ICST Academic Management System */
+session_start(); ?>
 <!DOCTYPE html><html lang="en" data-theme="light"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>ICST Academic Management System</title>
@@ -10,7 +12,7 @@
 <div class="public-page">
 <div class="public-header">
 <div class="logo"><div class="logo-icon">IC</div><div>ICST Academic Management<small>University of Vocational Technology</small></div></div>
-<nav><a href="index.php">Home</a><a href="about-us.php">About</a><a href="features.php">Features</a><a href="contact-us.php">Contact</a>
+<nav><a href="index.php">Home</a><a href="about-us.php">About</a><a href="features.php">Features</a><a href="product.php">Products</a><a href="contact-us.php">Contact</a>
 <?php if(isset($_SESSION['user'])):?><a href="dashboard.php" class="btn btn-sm btn-primary">Dashboard</a>
 <?php else:?><a href="login.php" class="btn btn-sm btn-gold">Login</a><a href="register.php" class="btn btn-sm btn-primary">Register</a>
 <?php endif;?>

@@ -1,4 +1,6 @@
-<?php session_start(); ?>
+<?php
+/* about-us.php — About Us page for ICST public-facing site */
+session_start(); ?>
 <!DOCTYPE html><html lang="en" data-theme="light"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>About Us - ICST Academic Management</title>
@@ -10,7 +12,7 @@
 <div class="public-page">
 <div class="public-header">
 <div class="logo"><div class="logo-icon">IC</div><div>ICST Academic Management<small>University of Vocational Technology</small></div></div>
-<nav><a href="index.php">Home</a><a href="about-us.php">About</a><a href="features.php">Features</a><a href="contact-us.php">Contact</a><a href="login.php" class="btn btn-sm btn-gold">Login</a></nav></div>
+<nav><a href="index.php">Home</a><a href="about-us.php">About</a><a href="features.php">Features</a><a href="product.php">Products</a><a href="contact-us.php">Contact</a><a href="login.php" class="btn btn-sm btn-gold">Login</a></nav></div>
 <div class="public-hero" style="background:linear-gradient(135deg,var(--bg-sidebar) 0%,#2a1a1a 100%)">
 <div class="hero-content"><h1>About ICST</h1><p>The ICST Academic Management System is a comprehensive platform designed to streamline student information management, attendance tracking, assessment scheduling, and academic reporting for the Institute of Computer Science and Technology.</p></div></div>
 <div class="public-content">

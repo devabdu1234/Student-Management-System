@@ -1,32 +1,41 @@
-<?php
-session_start(); include_once 'database.php';
+﻿<?php
+/* teacher.php — Add, update, delete, and list lecturer records */
+session_start(); include_once 'includes/config.php';
+// Redirect unauthenticated or non-admin users
 if (!isset($_SESSION['user']) || ($_SESSION['role'] != 'Lecturer' && $_SESSION['role'] != 'Admin')) { header('Location: logout.php'); exit; }
 $tid=$fname=$lname=$email=$contact=$skill=$dob=$gender=$address='';
 $message='';
 $is_update=isset($_GET['update']);
 if ($is_update) {
+  // Fetch existing lecturer for editing
   $r=db_fetch("SELECT * FROM teacher WHERE tid=?",[$_GET['update']]);
   if($r){$tid=$r['tid'];$fname=$r['fname'];$lname=$r['lname'];$email=$r['email'];$contact=$r['contact'];$skill=$r['skill'];$dob=$r['bday'];$gender=$r['gender'];$address=$r['address'];}
 }
 if(isset($_POST['submit'])){
   $tid=$_POST['tid'];$fname=$_POST['fname'];$lname=$_POST['lname'];$email=$_POST['email'];$contact=$_POST['contact'];$skill=$_POST['skill'];$dob=$_POST['dob'];$gender=$_POST['gender'];$address=$_POST['address'];
   try{
-    if($is_update){db_query("UPDATE teacher SET fname=?,lname=?,bday=?,address=?,gender=?,skill=?,contact=?,email=? WHERE tid=?",[$fname,$lname,$dob,$address,$gender,$skill,$contact,$email,$tid]);
+    if($is_update){
+      // Update existing lecturer record
+      db_query("UPDATE teacher SET fname=?,lname=?,bday=?,address=?,gender=?,skill=?,contact=?,email=? WHERE tid=?",[$fname,$lname,$dob,$address,$gender,$skill,$contact,$email,$tid]);
       $message='<div class="alert alert-success alert-auto"><i class="fa fa-check-circle"></i> Lecturer updated!</div>';}
-    else {db_query("INSERT INTO teacher(tid,fname,lname,bday,address,gender,skill,contact,email) VALUES(?,?,?,?,?,?,?,?,?)",[$tid,$fname,$lname,$dob,$address,$gender,$skill,$contact,$email]);
+    else {
+      // Insert new lecturer record
+      db_query("INSERT INTO teacher(tid,fname,lname,bday,address,gender,skill,contact,email) VALUES(?,?,?,?,?,?,?,?,?)",[$tid,$fname,$lname,$dob,$address,$gender,$skill,$contact,$email]);
       $message='<div class="alert alert-success alert-auto"><i class="fa fa-check-circle"></i> Lecturer added!</div>';}
   }catch(Exception $e){$message='<div class="alert alert-danger"><i class="fa fa-exclamation-triangle"></i> '.htmlspecialchars($e->getMessage()).'</div>';}
 }
+// Process delete request
 if(isset($_GET['delete'])){try{db_query("DELETE FROM teacher WHERE tid=?",[$_GET['delete']]);$message='<div class="alert alert-success alert-auto"><i class="fa fa-check-circle"></i> Lecturer deleted!</div>';}catch(Exception $e){$message='<div class="alert alert-danger"><i class="fa fa-exclamation-triangle"></i> '.htmlspecialchars($e->getMessage()).'</div>';}}
+// Retrieve all lecturers for table listing
 $rows=db_fetch_all("SELECT * FROM teacher ORDER BY tid DESC");
 ?>
 <!DOCTYPE html><html lang="en" data-theme="light"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Lecturers - ICST Academic Management</title><link rel="icon" href="images/user.png">
-<?php include_once 'header.php'; ?>
+<?php include_once 'includes/header.php'; ?>
 </head><body>
-<div class="app-layout"><?php include_once 'sidebar.php'; ?>
-<div class="main-content"><?php include_once 'nav-menu.php'; ?>
+<div class="app-layout"><?php include_once 'includes/sidebar.php'; ?>
+<div class="main-content"><?php include_once 'includes/nav-menu.php'; ?>
 <div class="page-content fade-in">
 <div class="page-header"><h1 data-page-title>Lecturer Management</h1><p>Manage all lecturers in the system</p></div>
 <?=$message?>
@@ -57,6 +66,6 @@ $rows=db_fetch_all("SELECT * FROM teacher ORDER BY tid DESC");
 <div class="mci-row"><span class="mci-label">Contact</span><span class="mci-value"><?=htmlspecialchars($r['contact'])?></span></div>
 <div class="mci-actions"><a href="teacher.php?update=<?=urlencode($r['tid'])?>" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i> Edit</a><a href="teacher.php?delete=<?=urlencode($r['tid'])?>" class="btn btn-sm btn-danger" data-confirm="Delete?"><i class="fa fa-trash"></i> Delete</a></div></div><?php endforeach;?><?php else:?><div class="empty-state"><i class="fa fa-black-tie"></i><h3>No Lecturers</h3><p>Add your first lecturer.</p></div><?php endif;?></div></div></div></div></div></div>
 <footer class="app-footer">ICST Academic Management System &copy; <?=date('Y')?></footer></div></div>
-<?php include_once 'footer.php';?>
+<?php include_once 'includes/footer.php';?>
 <script>document.getElementById('breadcrumbCurrent').textContent='Lecturer Management';</script>
 </body></html>

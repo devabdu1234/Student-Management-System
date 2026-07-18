@@ -447,3 +447,26 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`role`, `email`, `password`)
 SELECT `role`, `email`, `password` FROM `users`;
+
+-- ============================================================
+-- PRODUCT — assignment required entity for CRUD operations
+-- Fields: product_id, product_name, description, price, quantity, created_at
+-- ============================================================
+DROP TABLE IF EXISTS `product`;
+CREATE TABLE `product` (
+  `product_id` int(11) NOT NULL AUTO_INCREMENT,
+  `product_name` varchar(100) NOT NULL,
+  `description` text DEFAULT NULL,
+  `price` decimal(10,2) DEFAULT 0.00,
+  `quantity` int(11) DEFAULT 0,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`product_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+INSERT INTO `product` (`product_name`, `description`, `price`, `quantity`) VALUES
+('ICST Student Handbook', 'Official student handbook with academic policies, procedures, and campus information for the current academic year.', 15.00, 50),
+('Academic Planner 2025', 'Hardbound academic planner for the 2024–2025 academic year, including term dates and exam schedules.', 12.50, 30),
+('ICST Uniform Set', 'Complete uniform set including polo shirt, trousers, and ID lace with ICST branding.', 45.00, 25),
+('Programming Lab Manual', 'Lab manual for CS101 and CS201 with 50+ programming exercises and solutions.', 20.00, 40),
+('ICST Lanyard & ID Case', 'Official ICST-branded lanyard with transparent ID card case.', 5.00, 100),
+('Research Paper Bundle', 'Collection of published research papers by ICST faculty, 2023–2024 edition.', 25.00, 15);

@@ -1,19 +1,24 @@
-<?php
-session_start(); include_once 'database.php';
+﻿<?php
+/* user.php — Create, update, delete, and list system user accounts with role assignment */
+session_start(); include_once 'includes/config.php';
+// Redirect unauthenticated or non-admin users
 if (!isset($_SESSION['user']) || ($_SESSION['role'] != 'Lecturer' && $_SESSION['role'] != 'Admin')) { header('Location: logout.php'); exit; }
 $message='';
 
+// Process delete request
 if (isset($_GET['delete'])) {
   try{db_query("DELETE FROM users WHERE email=?",[$_GET['delete']]);$message='<div class="alert alert-success alert-auto"><i class="fa fa-check-circle"></i> User deleted!</div>';}
   catch(Exception $e){$message='<div class="alert alert-danger"><i class="fa fa-exclamation-triangle"></i> '.htmlspecialchars($e->getMessage()).'</div>';}
 }
 
 $edit_email='';$edit_role='';
+// Fetch existing user data for editing
 if(isset($_GET['email'])){
   $r=db_fetch("SELECT * FROM users WHERE email=?",[$_GET['email']]);
   if($r){$edit_email=$r['email'];$edit_role=$r['role'];}
 }
 
+// Process form submission for create or update
 if(isset($_POST['submit'])){
   if($_POST['submit']=='update_user'){
     $email=$_GET['email'];$password=password_hash($_POST['password'],PASSWORD_DEFAULT);$role=$_POST['role'];
@@ -25,15 +30,16 @@ if(isset($_POST['submit'])){
     catch(Exception $e){$message='<div class="alert alert-danger"><i class="fa fa-exclamation-triangle"></i> '.htmlspecialchars($e->getMessage()).'</div>';}
   }
 }
+// Fetch data for email dropdown and user listing table
 $emails=db_fetch_all("SELECT email FROM (SELECT email FROM parent UNION SELECT email FROM student UNION SELECT email FROM teacher) t");
 $users=db_fetch_all("SELECT * FROM users");
 ?>
 <!DOCTYPE html><html lang="en" data-theme="light"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Users - ICST Academic Management</title><link rel="icon" href="images/user.png">
-<?php include_once 'header.php';?></head><body>
-<div class="app-layout"><?php include_once 'sidebar.php';?>
-<div class="main-content"><?php include_once 'nav-menu.php';?>
+<?php include_once 'includes/header.php';?></head><body>
+<div class="app-layout"><?php include_once 'includes/sidebar.php';?>
+<div class="main-content"><?php include_once 'includes/nav-menu.php';?>
 <div class="page-content fade-in">
 <div class="page-header"><h1 data-page-title>User Management</h1><p>Create and manage system user accounts</p></div>
 <?=$message?>
@@ -51,6 +57,6 @@ $users=db_fetch_all("SELECT * FROM users");
 <tbody><?php if(count($users)>0):?><?php foreach($users as $r):?><tr><td><?=htmlspecialchars($r['email'])?></td><td><span class="badge" style="background:var(--icst-red);color:white;padding:4px 10px;border-radius:10px"><?=htmlspecialchars($r['role'])?></span></td>
 <td class="actions"><a href="user.php?delete=<?=urlencode($r['email'])?>" class="btn btn-sm btn-danger" data-confirm="Delete this user?"><i class="fa fa-trash"></i></a><a href="user.php?email=<?=urlencode($r['email'])?>" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></a></td></tr><?php endforeach;?><?php else:?><tr><td colspan="3" class="table-empty"><i class="fa fa-user-plus"></i> No users found</td></tr><?php endif;?></tbody></table></div></div></div></div></div>
 <footer class="app-footer">ICST Academic Management System &copy; <?=date('Y')?></footer></div></div>
-<?php include_once 'footer.php';?>
+<?php include_once 'includes/footer.php';?>
 <script>document.getElementById('breadcrumbCurrent').textContent='User Management';</script>
 </body></html>

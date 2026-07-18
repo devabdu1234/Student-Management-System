@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none">
+  <rect width="400" height="300" rx="16" fill="#f8f4f0"/>
+  <rect x="60" y="50" width="280" height="200" rx="16" fill="white" stroke="rgba(13,31,60,0.1)" stroke-width="2"/>
+  <circle cx="200" cy="100" r="8" fill="#c8a951"/>
+  <circle cx="170" cy="95" r="4" fill="rgba(13,31,60,0.15)"/>
+  <circle cx="230" cy="95" r="4" fill="rgba(13,31,60,0.15)"/>
+  <rect x="100" y="120" width="200" height="6" rx="3" fill="rgba(13,31,60,0.08)"/>
+  <rect x="100" y="136" width="160" height="6" rx="3" fill="rgba(13,31,60,0.08)"/>
+  <rect x="100" y="152" width="180" height="6" rx="3" fill="rgba(13,31,60,0.08)"/>
+  <rect x="100" y="168" width="120" height="6" rx="3" fill="rgba(13,31,60,0.08)"/>
+  <rect x="100" y="200" width="200" height="32" rx="8" fill="#0d1f3c"/>
+  <text x="200" y="220" font-family="Inter,sans-serif" font-size="12" fill="white" text-anchor="middle">Send Message</text>
+  <circle cx="100" cy="270" r="6" fill="#c8a951" opacity="0.5"/>
+  <rect x="115" y="267" width="60" height="6" rx="3" fill="rgba(13,31,60,0.1)"/>
+</svg>

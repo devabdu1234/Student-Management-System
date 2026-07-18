@@ -1,6 +1,7 @@
-<?php
+﻿<?php
+/* login.php — User authentication page with CSRF protection and role-based profile mapping */
 session_start();
-include_once 'config.php';
+include_once 'includes/config.php';
 $message = '';
 if (isset($_POST['submit'])) {
   // Verify CSRF token

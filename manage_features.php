@@ -1,15 +1,18 @@
-<?php
-session_start(); include_once 'config.php';
+﻿<?php
+/* manage_features.php — List, view, and manage all system features with CRUD links */
+session_start(); include_once 'includes/config.php';
+// Redirect unauthenticated or non-admin users
 if (!isset($_SESSION['user']) || ($_SESSION['role'] != 'Lecturer' && $_SESSION['role'] != 'Admin')) { header('Location: login.php'); exit; }
 $message='';
+// Retrieve all features from database
 $features=db_fetch_all("SELECT * FROM features ORDER BY Features_id");
 ?>
 <!DOCTYPE html><html lang="en" data-theme="light"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Manage Features - ICST Academic Management</title><link rel="icon" href="images/user.png">
-<?php include_once 'header.php';?></head><body>
-<div class="app-layout"><?php include_once 'sidebar.php';?>
-<div class="main-content"><?php include_once 'nav-menu.php';?>
+<?php include_once 'includes/header.php';?></head><body>
+<div class="app-layout"><?php include_once 'includes/sidebar.php';?>
+<div class="main-content"><?php include_once 'includes/nav-menu.php';?>
 <div class="page-content fade-in">
 <div class="page-header"><h1 data-page-title>Manage Features</h1><p>System features overview — <?=count($features)?> features registered</p></div>
 <?=$message?>
@@ -32,6 +35,6 @@ $features=db_fetch_all("SELECT * FROM features ORDER BY Features_id");
 <h5>Add New Feature</h5></a></div></div></div>
 </div></div>
 <footer class="app-footer">ICST Academic Management System &copy; <?=date('Y')?></footer></div></div>
-<?php include_once 'footer.php';?>
+<?php include_once 'includes/footer.php';?>
 <script>document.getElementById('breadcrumbCurrent').textContent='Manage Features';</script>
 </body></html>

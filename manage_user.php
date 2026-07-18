@@ -1,14 +1,17 @@
-<?php
-session_start(); include_once 'database.php';
+﻿<?php
+/* manage_user.php — List all system user accounts with edit/delete actions */
+session_start(); include_once 'includes/config.php';
+// Redirect unauthenticated or non-admin users
 if (!isset($_SESSION['user']) || ($_SESSION['role'] != 'Lecturer' && $_SESSION['role'] != 'Admin')) { header('Location: login.php'); exit; }
+// Retrieve all users from database
 $users = db_fetch_all("SELECT * FROM users");
 ?>
 <!DOCTYPE html><html lang="en" data-theme="light"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Manage Users - ICST</title><link rel="icon" href="images/user.png">
-<?php include_once 'header.php';?></head><body>
-<div class="app-layout"><?php include_once 'sidebar.php';?>
-<div class="main-content"><?php include_once 'nav-menu.php';?>
+<?php include_once 'includes/header.php';?></head><body>
+<div class="app-layout"><?php include_once 'includes/sidebar.php';?>
+<div class="main-content"><?php include_once 'includes/nav-menu.php';?>
 <div class="page-content fade-in">
 <div class="page-header"><h1 data-page-title>Manage Users</h1><p>View and manage all system users</p></div>
 <div class="card">
@@ -20,6 +23,6 @@ $users = db_fetch_all("SELECT * FROM users");
 <td class="actions"><a href="edit_user.php?email=<?=urlencode($r['email'])?>" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></a>
 <a href="delete_user.php?email=<?=urlencode($r['email'])?>" class="btn btn-sm btn-danger" data-confirm="Delete this user?"><i class="fa fa-trash"></i></a></td></tr><?php endforeach;?><?php else:?><tr><td colspan="3" class="table-empty"><i class="fa fa-users"></i> No users</td></tr><?php endif;?></tbody></table></div></div></div></div>
 <footer class="app-footer">ICST Academic Management System &copy; <?=date('Y')?></footer></div></div>
-<?php include_once 'footer.php';?>
+<?php include_once 'includes/footer.php';?>
 <script>document.getElementById('breadcrumbCurrent').textContent='Manage Users';</script>
 </body></html>

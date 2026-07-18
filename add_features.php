@@ -1,13 +1,17 @@
-<?php
-session_start(); include_once 'config.php';
+﻿<?php
+/* add_features.php — Form to add a new system feature */
+session_start(); include_once 'includes/config.php';
+// Redirect unauthenticated or non-admin users
 if (!isset($_SESSION['user']) || ($_SESSION['role'] != 'Lecturer' && $_SESSION['role'] != 'Admin')) { header('Location: login.php'); exit; }
 $message=''; $name=$desc=$facilities=$user=$image='';
 if(isset($_POST['submit'])){
   // CSRF check
   if(!isset($_POST['csrf_token'])||!verify_csrf($_POST['csrf_token'])){$message='<div class="alert alert-danger">Invalid request.</div>';}else{
+  // Sanitize input fields
   $name=sanitize($_POST['name']??'');$desc=sanitize($_POST['description']??'');$facilities=sanitize($_POST['facilities']??'');$user=sanitize($_POST['user']??'');$image=sanitize($_POST['image']??'');
   if($name){
     try{
+      // Insert new feature using prepared statement
       db_query("INSERT INTO features(Features_name,description,facilities,user,image) VALUES(?,?,?,?,?)",[$name,$desc,$facilities,$user,$image]);
       $message='<div class="alert alert-success alert-auto"><i class="fa fa-check-circle"></i> Feature "<strong>'.htmlspecialchars($name).'</strong>" added successfully!</div>';
       $name=$desc=$facilities=$user=$image='';
@@ -19,9 +23,9 @@ if(isset($_POST['submit'])){
 <!DOCTYPE html><html lang="en" data-theme="light"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Add Feature - ICST Academic Management</title><link rel="icon" href="images/user.png">
-<?php include_once 'header.php';?></head><body>
-<div class="app-layout"><?php include_once 'sidebar.php';?>
-<div class="main-content"><?php include_once 'nav-menu.php';?>
+<?php include_once 'includes/header.php';?></head><body>
+<div class="app-layout"><?php include_once 'includes/sidebar.php';?>
+<div class="main-content"><?php include_once 'includes/nav-menu.php';?>
 <div class="page-content fade-in">
 <div class="page-header"><h1 data-page-title>Add Feature</h1><p>Register a new system feature</p></div>
 <?=$message?>
@@ -36,6 +40,6 @@ if(isset($_POST['submit'])){
 <div class="form-actions"><button type="submit" name="submit" value="submit" class="btn btn-primary"><i class="fa fa-save"></i> Add Feature</button>
 <a href="manage_features.php" class="btn btn-secondary"><i class="fa fa-times"></i> Cancel</a></div></form></div></div></div>
 <footer class="app-footer">ICST Academic Management System &copy; <?=date('Y')?></footer></div></div>
-<?php include_once 'footer.php';?>
+<?php include_once 'includes/footer.php';?>
 <script>document.getElementById('breadcrumbCurrent').textContent='Add Feature';</script>
 </body></html>

@@ -1,11 +1,14 @@
-<?php
+﻿<?php
+/* dashboard.php — Main user dashboard showing system overview stats, recent activity, and quick actions */
 session_start();
-include_once 'database.php';
+include_once 'includes/config.php';
+// Redirect unauthenticated users
 if (!isset($_SESSION['user'])) {
   header('Location: login.php');
   exit;
 }
 
+// Retrieve dashboard statistics from database
 $total_students = db_fetch("SELECT COUNT(*) as c FROM student")['c'] ?? 0;
 $total_teachers = db_fetch("SELECT COUNT(*) as c FROM teacher")['c'] ?? 0;
 $total_subjects = db_fetch("SELECT COUNT(*) as c FROM subject")['c'] ?? 0;
@@ -22,16 +25,16 @@ $total_classrooms = db_fetch("SELECT COUNT(*) as c FROM classroom")['c'] ?? 0;
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <title>Dashboard - ICST Academic Management</title>
   <link rel="icon" href="images/user.png">
-  <?php include_once 'header.php'; ?>
+  <?php include_once 'includes/header.php'; ?>
   <style>
     [data-page-title] { display: none; }
   </style>
 </head>
 <body>
   <div class="app-layout">
-    <?php include_once 'sidebar.php'; ?>
+    <?php include_once 'includes/sidebar.php'; ?>
     <div class="main-content">
-      <?php include_once 'nav-menu.php'; ?>
+      <?php include_once 'includes/nav-menu.php'; ?>
       <div class="page-content fade-in" role="main">
         <div class="page-header">
           <h1 data-page-title>Dashboard</h1>
@@ -98,6 +101,7 @@ $total_classrooms = db_fetch("SELECT COUNT(*) as c FROM classroom")['c'] ?? 0;
             </div>
             <div class="card-body">
               <?php
+              // Fetch recent students and notices for activity feed
               $recent_students = db_fetch_all("SELECT fname, lname, 'Student' as type FROM student ORDER BY sid DESC LIMIT 3");
               $recent_notices = db_fetch_all("SELECT notice, date, 'Notice' as type FROM notice ORDER BY id DESC LIMIT 3");
               $activities = array_merge($recent_students, $recent_notices);
@@ -172,7 +176,7 @@ $total_classrooms = db_fetch("SELECT COUNT(*) as c FROM classroom")['c'] ?? 0;
       </footer>
     </div>
   </div>
-  <?php include_once 'footer.php'; ?>
+  <?php include_once 'includes/footer.php'; ?>
   <script>
     document.getElementById('breadcrumbCurrent').textContent = 'Dashboard';
   </script>
