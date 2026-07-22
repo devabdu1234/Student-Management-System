@@ -1,0 +1,200 @@
+digraph DatabaseERDiagram {
+  graph [
+    rankdir=LR,
+    dpi=200,
+    bgcolor=white,
+    fontname="Arial",
+    pad=0.5,
+    splines=true,
+    overlap=false,
+    ranksep=2,
+    nodesep=0.8
+  ];
+
+  node [
+    shape=plain,
+    fontname="Arial",
+    fontsize=11,
+    margin="0.05,0.02"
+  ];
+
+  edge [
+    fontname="Arial",
+    fontsize=9,
+    color="#555555",
+    arrowhead=normal,
+    arrowsize=0.7
+  ];
+
+  // ── Table definitions using HTML-like labels ──
+
+  users [label=<
+    <TABLE BORDER="1" CELLBORDER="1" CELLSPACING="0" BGCOLOR="white">
+      <TR><TD BGCOLOR="#0d1f3c"><FONT COLOR="white"><B>users</B></FONT></TD></TR>
+      <TR><TD ALIGN="LEFT" PORT="user_id"><B>user_id</B>  INT (PK)</TD></TR>
+      <TR><TD ALIGN="LEFT">fullname  VARCHAR(100)</TD></TR>
+      <TR><TD ALIGN="LEFT">email  VARCHAR(100) (UNIQUE)</TD></TR>
+      <TR><TD ALIGN="LEFT">password  VARCHAR(255) (bcrypt)</TD></TR>
+      <TR><TD ALIGN="LEFT">role  ENUM(Admin,Lecturer,Student,Parent)</TD></TR>
+      <TR><TD ALIGN="LEFT">phone  VARCHAR(20)</TD></TR>
+      <TR><TD ALIGN="LEFT">created_at  TIMESTAMP</TD></TR>
+    </TABLE>
+  >];
+
+  features [label=<
+    <TABLE BORDER="1" CELLBORDER="1" CELLSPACING="0" BGCOLOR="white">
+      <TR><TD BGCOLOR="#0d1f3c"><FONT COLOR="white"><B>features</B></FONT></TD></TR>
+      <TR><TD ALIGN="LEFT" PORT="Features_id"><B>Features_id</B>  INT (PK)</TD></TR>
+      <TR><TD ALIGN="LEFT">Features_name  VARCHAR(100)</TD></TR>
+      <TR><TD ALIGN="LEFT">description  VARCHAR(500)</TD></TR>
+      <TR><TD ALIGN="LEFT">facilities  TEXT</TD></TR>
+      <TR><TD ALIGN="LEFT">user  VARCHAR(100)</TD></TR>
+      <TR><TD ALIGN="LEFT">image  VARCHAR(255)</TD></TR>
+      <TR><TD ALIGN="LEFT">created_at  TIMESTAMP</TD></TR>
+    </TABLE>
+  >];
+
+  product [label=<
+    <TABLE BORDER="1" CELLBORDER="1" CELLSPACING="0" BGCOLOR="white">
+      <TR><TD BGCOLOR="#0d1f3c"><FONT COLOR="white"><B>product</B></FONT></TD></TR>
+      <TR><TD ALIGN="LEFT" PORT="product_id"><B>product_id</B>  INT (PK)</TD></TR>
+      <TR><TD ALIGN="LEFT">product_name  VARCHAR(100)</TD></TR>
+      <TR><TD ALIGN="LEFT">description  TEXT</TD></TR>
+      <TR><TD ALIGN="LEFT">price  DECIMAL(10,2)</TD></TR>
+      <TR><TD ALIGN="LEFT">quantity  INT</TD></TR>
+      <TR><TD ALIGN="LEFT">created_at  TIMESTAMP</TD></TR>
+    </TABLE>
+  >];
+
+  student [label=<
+    <TABLE BORDER="1" CELLBORDER="1" CELLSPACING="0" BGCOLOR="white">
+      <TR><TD BGCOLOR="#8B0000"><FONT COLOR="white"><B>student</B></FONT></TD></TR>
+      <TR><TD ALIGN="LEFT" PORT="id"><B>id</B>  INT (PK)</TD></TR>
+      <TR><TD ALIGN="LEFT">first_name  VARCHAR(100)</TD></TR>
+      <TR><TD ALIGN="LEFT">last_name  VARCHAR(100)</TD></TR>
+      <TR><TD ALIGN="LEFT">email  VARCHAR(100)</TD></TR>
+      <TR><TD ALIGN="LEFT">phone  VARCHAR(20)</TD></TR>
+      <TR><TD ALIGN="LEFT">gender  VARCHAR(10)</TD></TR>
+      <TR><TD ALIGN="LEFT" PORT="classroom_id">classroom_id  INT (FK)</TD></TR>
+      <TR><TD ALIGN="LEFT">created_at  TIMESTAMP</TD></TR>
+    </TABLE>
+  >];
+
+  teacher [label=<
+    <TABLE BORDER="1" CELLBORDER="1" CELLSPACING="0" BGCOLOR="white">
+      <TR><TD BGCOLOR="#8B0000"><FONT COLOR="white"><B>teacher</B></FONT></TD></TR>
+      <TR><TD ALIGN="LEFT" PORT="id"><B>id</B>  INT (PK)</TD></TR>
+      <TR><TD ALIGN="LEFT">first_name  VARCHAR(100)</TD></TR>
+      <TR><TD ALIGN="LEFT">last_name  VARCHAR(100)</TD></TR>
+      <TR><TD ALIGN="LEFT">email  VARCHAR(100)</TD></TR>
+      <TR><TD ALIGN="LEFT">phone  VARCHAR(20)</TD></TR>
+      <TR><TD ALIGN="LEFT">gender  VARCHAR(10)</TD></TR>
+      <TR><TD ALIGN="LEFT">salary  VARCHAR(50)</TD></TR>
+      <TR><TD ALIGN="LEFT">created_at  TIMESTAMP</TD></TR>
+    </TABLE>
+  >];
+
+  parent [label=<
+    <TABLE BORDER="1" CELLBORDER="1" CELLSPACING="0" BGCOLOR="white">
+      <TR><TD BGCOLOR="#8B0000"><FONT COLOR="white"><B>parent</B></FONT></TD></TR>
+      <TR><TD ALIGN="LEFT" PORT="id"><B>id</B>  INT (PK)</TD></TR>
+      <TR><TD ALIGN="LEFT">first_name  VARCHAR(100)</TD></TR>
+      <TR><TD ALIGN="LEFT">last_name  VARCHAR(100)</TD></TR>
+      <TR><TD ALIGN="LEFT">email  VARCHAR(100)</TD></TR>
+      <TR><TD ALIGN="LEFT">phone  VARCHAR(20)</TD></TR>
+      <TR><TD ALIGN="LEFT">gender  VARCHAR(10)</TD></TR>
+      <TR><TD ALIGN="LEFT">profession  VARCHAR(100)</TD></TR>
+      <TR><TD ALIGN="LEFT">created_at  TIMESTAMP</TD></TR>
+    </TABLE>
+  >];
+
+  subject [label=<
+    <TABLE BORDER="1" CELLBORDER="1" CELLSPACING="0" BGCOLOR="white">
+      <TR><TD BGCOLOR="#8B0000"><FONT COLOR="white"><B>subject</B></FONT></TD></TR>
+      <TR><TD ALIGN="LEFT" PORT="id"><B>id</B>  INT (PK)</TD></TR>
+      <TR><TD ALIGN="LEFT">title  VARCHAR(100)</TD></TR>
+      <TR><TD ALIGN="LEFT">subtitle  VARCHAR(100)</TD></TR>
+      <TR><TD ALIGN="LEFT">created_at  TIMESTAMP</TD></TR>
+    </TABLE>
+  >];
+
+  class [label=<
+    <TABLE BORDER="1" CELLBORDER="1" CELLSPACING="0" BGCOLOR="white">
+      <TR><TD BGCOLOR="#8B0000"><FONT COLOR="white"><B>class</B></FONT></TD></TR>
+      <TR><TD ALIGN="LEFT" PORT="id"><B>id</B>  INT (PK)</TD></TR>
+      <TR><TD ALIGN="LEFT">classroom  VARCHAR(100)</TD></TR>
+      <TR><TD ALIGN="LEFT">created_at  TIMESTAMP</TD></TR>
+    </TABLE>
+  >];
+
+  attendance [label=<
+    <TABLE BORDER="1" CELLBORDER="1" CELLSPACING="0" BGCOLOR="white">
+      <TR><TD BGCOLOR="#8B0000"><FONT COLOR="white"><B>attendance</B></FONT></TD></TR>
+      <TR><TD ALIGN="LEFT" PORT="id"><B>id</B>  INT (PK)</TD></TR>
+      <TR><TD ALIGN="LEFT" PORT="session_id">session_id  INT (FK)</TD></TR>
+      <TR><TD ALIGN="LEFT" PORT="student_id">student_id  INT (FK)</TD></TR>
+      <TR><TD ALIGN="LEFT">status  VARCHAR(20)</TD></TR>
+      <TR><TD ALIGN="LEFT">created_at  TIMESTAMP</TD></TR>
+    </TABLE>
+  >];
+
+  schedule [label=<
+    <TABLE BORDER="1" CELLBORDER="1" CELLSPACING="0" BGCOLOR="white">
+      <TR><TD BGCOLOR="#8B0000"><FONT COLOR="white"><B>schedule</B></FONT></TD></TR>
+      <TR><TD ALIGN="LEFT" PORT="id"><B>id</B>  INT (PK)</TD></TR>
+      <TR><TD ALIGN="LEFT" PORT="subject">subject  INT (FK)</TD></TR>
+      <TR><TD ALIGN="LEFT" PORT="classroom">classroom  INT (FK)</TD></TR>
+      <TR><TD ALIGN="LEFT">day  VARCHAR(20)</TD></TR>
+      <TR><TD ALIGN="LEFT">time_start  TIME</TD></TR>
+      <TR><TD ALIGN="LEFT">time_end  TIME</TD></TR>
+      <TR><TD ALIGN="LEFT">created_at  TIMESTAMP</TD></TR>
+    </TABLE>
+  >];
+
+  exam [label=<
+    <TABLE BORDER="1" CELLBORDER="1" CELLSPACING="0" BGCOLOR="white">
+      <TR><TD BGCOLOR="#8B0000"><FONT COLOR="white"><B>exam</B></FONT></TD></TR>
+      <TR><TD ALIGN="LEFT" PORT="id"><B>id</B>  INT (PK)</TD></TR>
+      <TR><TD ALIGN="LEFT">subject  VARCHAR(100)</TD></TR>
+      <TR><TD ALIGN="LEFT" PORT="classroom">classroom  INT (FK)</TD></TR>
+      <TR><TD ALIGN="LEFT">date  DATE</TD></TR>
+      <TR><TD ALIGN="LEFT">start_time  TIME</TD></TR>
+      <TR><TD ALIGN="LEFT">end_time  TIME</TD></TR>
+      <TR><TD ALIGN="LEFT">created_at  TIMESTAMP</TD></TR>
+    </TABLE>
+  >];
+
+  examresult [label=<
+    <TABLE BORDER="1" CELLBORDER="1" CELLSPACING="0" BGCOLOR="white">
+      <TR><TD BGCOLOR="#8B0000"><FONT COLOR="white"><B>examresult</B></FONT></TD></TR>
+      <TR><TD ALIGN="LEFT" PORT="id"><B>id</B>  INT (PK)</TD></TR>
+      <TR><TD ALIGN="LEFT">student  VARCHAR(100)</TD></TR>
+      <TR><TD ALIGN="LEFT">subject  VARCHAR(100)</TD></TR>
+      <TR><TD ALIGN="LEFT">marks  VARCHAR(20)</TD></TR>
+      <TR><TD ALIGN="LEFT">grade  VARCHAR(10)</TD></TR>
+      <TR><TD ALIGN="LEFT">created_at  TIMESTAMP</TD></TR>
+    </TABLE>
+  >];
+
+  notice [label=<
+    <TABLE BORDER="1" CELLBORDER="1" CELLSPACING="0" BGCOLOR="white">
+      <TR><TD BGCOLOR="#8B0000"><FONT COLOR="white"><B>notice</B></FONT></TD></TR>
+      <TR><TD ALIGN="LEFT" PORT="id"><B>id</B>  INT (PK)</TD></TR>
+      <TR><TD ALIGN="LEFT">notice_title  VARCHAR(100)</TD></TR>
+      <TR><TD ALIGN="LEFT">notice_body  TEXT</TD></TR>
+      <TR><TD ALIGN="LEFT" PORT="user">user  VARCHAR(100) (FK)</TD></TR>
+      <TR><TD ALIGN="LEFT">created_at  TIMESTAMP</TD></TR>
+    </TABLE>
+  >];
+
+  // ── Relationships ──
+
+  // Assignment-required tables (highlighted with navy headers)
+  student:classroom_id -> class:id [label="  belongs to", color="#0d1f3c", penwidth=1.5];
+  schedule:classroom -> class:id [label="  uses room", color="#8B0000"];
+  schedule:subject -> subject:id [label="  covers", color="#8B0000"];
+  attendance:session_id -> schedule:id [label="  session", color="#8B0000"];
+  attendance:student_id -> student:id [label="  for student", color="#8B0000"];
+  exam:classroom -> class:id [label="  held in", color="#8B0000"];
+  notice:user -> users:user_id [label="  posted by", color="#8B0000"];
+}
